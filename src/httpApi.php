@@ -6,14 +6,14 @@
  * @version 1.0
  */
 
-namespace TurboSmsUA;
+namespace Alxjzx100\TurboSMS;
 
 use DateTime;
 use Exception;
 use LengthException;
 use OutOfRangeException;
 
-class TurboSmsUA
+class httpApi
 {
     protected $apiKey;
     protected static $apiUrl = 'https://api.turbosms.ua';
@@ -46,7 +46,7 @@ class TurboSmsUA
     /**
      * @throws Exception
      */
-    public function setMode(string $mode): TurboSmsUA
+    public function setMode(string $mode): self
     {
         if (!in_array($mode, self::$mods)) throw new Exception('Unknown send mode');
 
@@ -54,7 +54,7 @@ class TurboSmsUA
         return $this;
     }
 
-    private function setApiKey(string $key): TurboSmsUA
+    private function setApiKey(string $key): self
     {
         $this->apiKey = $key;
         return $this;
@@ -65,7 +65,7 @@ class TurboSmsUA
         return $this->apiKey;
     }
 
-    public function setStartTime(DateTime $start_time): TurboSmsUA
+    public function setStartTime(DateTime $start_time): self
     {
         $current_date = new DateTime();
         if ($current_date > $start_time) throw new OutOfRangeException('Start date is in the past!');
@@ -81,7 +81,7 @@ class TurboSmsUA
      * @param int $is_flash
      * @return $this
      */
-    public function setIsFlash(int $is_flash = 1): TurboSmsUA
+    public function setIsFlash(int $is_flash = 1): self
     {
         $this->is_flash = $is_flash;
         return $this;
@@ -93,7 +93,7 @@ class TurboSmsUA
      * @param int $ttl
      * @return $this
      */
-    public function setTTL(int $ttl): TurboSmsUA
+    public function setTTL(int $ttl): self
     {
         if ($ttl < 60 || $ttl > 86400) throw new OutOfRangeException('TTL is out of range. Min = 60, Max = 86400');
 
@@ -106,7 +106,7 @@ class TurboSmsUA
      * @param string $image_url
      * @return $this
      */
-    public function setImage(string $image_url): TurboSmsUA
+    public function setImage(string $image_url): self
     {
         $this->image_url = $image_url;
         return $this;
@@ -117,7 +117,7 @@ class TurboSmsUA
      * @param string $caption
      * @return $this
      */
-    public function setCaption(string $caption): TurboSmsUA
+    public function setCaption(string $caption): self
     {
         $this->caption = $caption;
         return $this;
@@ -128,7 +128,7 @@ class TurboSmsUA
      * @param string $action
      * @return $this
      */
-    public function setAction(string $action): TurboSmsUA
+    public function setAction(string $action): self
     {
         $this->action = $action;
         return $this;
@@ -139,7 +139,7 @@ class TurboSmsUA
      * @param int $file_id
      * @return $this
      */
-    public function setFileId(int $file_id): TurboSmsUA
+    public function setFileId(int $file_id): self
     {
         $this->file_id = $file_id;
         return $this;
@@ -150,7 +150,7 @@ class TurboSmsUA
      * @param int $count
      * @return $this
      */
-    public function countClicks(int $count = 1): TurboSmsUA
+    public function countClicks(int $count = 1): self
     {
         $this->count_clicks = $count;
         return $this;
@@ -161,13 +161,13 @@ class TurboSmsUA
      * @param int $trans
      * @return $this
      */
-    public function isTransactional(int $trans = 1): TurboSmsUA
+    public function isTransactional(int $trans = 1): self
     {
         $this->is_transactional = $trans;
         return $this;
     }
 
-    public function setConnectionType(string $connectionType): TurboSmsUA
+    public function setConnectionType(string $connectionType): self
     {
         $this->connectionType = $connectionType;
         return $this;
