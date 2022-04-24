@@ -1,0 +1,17 @@
+{
+    "name": "alxjzx100/turbosmsua",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Alxjzx100\\Turbosmsua\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "alx",
+            "email": "alxjzx100@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
