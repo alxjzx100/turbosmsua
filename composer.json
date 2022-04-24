@@ -1,9 +1,9 @@
 {
     "name": "alxjzx100/turbosmsua",
-    "description": "HTTP API implementation for turbosms.ua",
+    "type": "library",
     "autoload": {
         "psr-4": {
-            "Alxjzx100\\Turbosmsua\\": "src/"
+            "Alxjzx100\\Turbosmsua\\": "turbosmsua/src/"
         }
     },
     "authors": [
@@ -12,7 +12,6 @@
             "email": "alxjzx100@gmail.com"
         }
     ],
-    "require": {
-        "php": ">=7.1"
-    }
+    "minimum-stability": "stable",
+    "require": {}
 }
