@@ -3,7 +3,7 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Alxjzx100\\Turbosmsua\\": "turbosmsua/src/"
+            "Alxjzx100\\Turbosmsua\\": "src/"
         }
     },
     "authors": [
