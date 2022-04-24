@@ -12,5 +12,7 @@
             "email": "alxjzx100@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.1"
+    }
 }
