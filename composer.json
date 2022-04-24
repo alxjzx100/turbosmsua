@@ -1,0 +1,16 @@
+{
+    "name": "alxjzx100/turbosmsua",
+    "description": "HTTP API implementation for turbosms.ua",
+    "autoload": {
+        "psr-4": {
+            "Alxjzx100\\Turbosmsua\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "alx",
+            "email": "alxjzx100@gmail.com"
+        }
+    ],
+    "require": {}
+}
