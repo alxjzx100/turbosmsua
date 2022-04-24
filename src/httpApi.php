@@ -3,10 +3,10 @@
  * turbosms.ua HTTP API implementation.
  *
  * @author AlxJzx100 <alxjzx100@gmail.com>
- * @version 1.0
+ * @version 1.0.1
  */
 
-namespace Alxjzx100\TurboSMS;
+namespace Alxjzx100\Turbosmsua;
 
 use DateTime;
 use Exception;
