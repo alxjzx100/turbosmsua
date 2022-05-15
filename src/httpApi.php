@@ -49,7 +49,6 @@ class httpApi
     public function setMode(string $mode): self
     {
         if (!in_array($mode, self::$mods)) throw new Exception('Unknown send mode');
-
         $this->currentMode = $mode;
         return $this;
     }
