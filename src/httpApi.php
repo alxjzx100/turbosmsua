@@ -193,9 +193,9 @@ class httpApi
         if (empty($sender)) throw new LengthException('Sender name is empty');
 
         if (is_string($num)) {
-            $data['recipients'][] = $num;
+            $data['recipients'][] = $this->phoneFormat($num);
         } elseif (is_array($num)) {
-            $data['recipients'] = $num;
+            $data['recipients'] = $this->phoneFormat($num);
         }
 
         if ($this->start_time) {
@@ -316,6 +316,34 @@ class httpApi
             $result = file_get_contents($url, false, stream_context_create($context));
         }
         return json_decode($result);
+    }
+
+    private function phoneFormat($phone, $mask = '#', $codeSplitter = '0')
+    {
+        $format = array(
+            '12' => '############', // for +38 0XX XX XXX XX or 38 0XX XX XXX XX
+            '10' => '38##########' // for 0XX XX XXX XX
+        );
+        $phone = preg_replace('/[^0-9]/', '', $phone);
+        $phone = substr($phone, strpos($phone, $codeSplitter));
+
+        if (array_key_exists(strlen($phone), $format)) {
+            $format = $format[strlen($phone)];
+        } else {
+            return $phone;
+        }
+
+        $pattern = '/' . str_repeat('([0-9])?', substr_count($format, $mask)) . '(.*)/';
+
+        $format = preg_replace_callback(
+            str_replace('#', $mask, '/([#])/'),
+            function () use (&$counter) {
+                return '${' . (++$counter) . '}';
+            },
+            $format
+        );
+
+        return ($phone) ? trim(preg_replace($pattern, $format, $phone, 1)) : false;
     }
 
 }
