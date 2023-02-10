@@ -29,6 +29,7 @@ class httpApi
     protected $file_id;
     protected $count_clicks;
     protected $is_transactional;
+    protected $ok_responses = [0,1,800,801,802,803];
 
     /**
      * @throws Exception
@@ -222,7 +223,7 @@ class httpApi
         }
 
         $result = $this->request($method, $data);
-        if ($result->response_code == 0) {
+        if (in_array( $result->response_code == 0, $this->ok_responses )) {
             return $result->response_result;
         } else throw new Exception($result->response_status);
     }
@@ -234,7 +235,7 @@ class httpApi
     {
         $method = '/user/balance.json';
         $result = $this->request($method);
-        if ($result->response_code == 0) {
+        if (in_array( $result->response_code == 0, $this->ok_responses )) {
             return $result->response_result;
         } else throw new Exception($result->response_status);
     }
@@ -249,7 +250,7 @@ class httpApi
         $method = '/file/details.json';
         $data = ['id' => $file_id];
         $result = $this->request($method, $data);
-        if ($result->response_code == 0) {
+        if (in_array( $result->response_code == 0, $this->ok_responses )) {
             return $result->response_result;
         } else throw new Exception($result->response_status);
     }
@@ -270,7 +271,7 @@ class httpApi
         }
 
         $result = $this->request($method, $data);
-        if ($result->response_code == 0) {
+        if (in_array( $result->response_code == 0, $this->ok_responses )) {
             return $result->response_result;
         } else throw new Exception($result->response_status);
 
